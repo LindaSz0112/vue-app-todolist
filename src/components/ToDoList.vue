@@ -7,7 +7,8 @@
     </div>
     <ul class="itemsList">
       <li v-for="(toDoItem, index) in toDoItems" :key="index">
-        {{ toDoItem }}<span>✅</span><span>❌</span>
+        {{ toDoItem }}<span>✅</span
+        ><a @click="deleteItem(index)" title="Cancel Item">❌</a>
       </li>
     </ul>
   </div>
@@ -27,6 +28,9 @@ export default {
         this.toDoItems.push(this.newItem);
         this.newItem = "";
       }
+    },
+    deleteItem(index) {
+      delete this.toDoItems.splice(index, 1);
     },
   },
 };
