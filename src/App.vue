@@ -1,7 +1,13 @@
 <template>
-  <h1></h1>
+  <ToDoList></ToDoList>
 </template>
 
 <script>
-export default {};
+import ToDoList from "@/components/ToDoList.vue";
+
+export default {
+  components: {
+    ToDoList,
+  },
+};
 </script>
