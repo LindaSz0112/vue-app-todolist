@@ -52,6 +52,10 @@ span {
     font-size: large;
 }
 
+.hidden {
+    display: none;
+}
+
 .itemElementUndone {
     background-color: blue;
 }
