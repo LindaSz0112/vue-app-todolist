@@ -1,0 +1,57 @@
+body {
+    background: url(./img/background-pic.jpg);
+    background-position: center center;
+    background-size: cover;
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px;
+    display: block;
+    margin: 0 auto;
+    max-width: 30%;
+    max-height: 50%;
+    padding: 30px 30px 30px 45px;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px
+}
+
+input {
+    border-radius: 5px;
+    padding: 3%;
+    max-width: 100%;
+}
+
+button {
+    background-color: aliceblue;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #BBB9BA;
+    font-family: 'Dancing Script', cursive;
+    font-size: larger;
+    margin-left: 5%;
+    padding: 2%;
+    transition: all 200ms ease-in-out;
+}
+
+button:hover {
+    background-color: #78CCCB;
+    color: aliceblue;
+}
+
+ul {
+    list-style: none;
+    margin-top: 15%;
+    text-align: start;
+}
+
+span {
+    font-size: large;
+}
+
+.itemElementUndone {
+    background-color: blue;
+}
