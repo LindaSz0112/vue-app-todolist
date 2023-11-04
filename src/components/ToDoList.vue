@@ -3,7 +3,11 @@
     <h1>To-Do List</h1>
     <div class="form-div">
       <span>Time:</span>
-      <input type="number" v-model="time" min="0" max="24" />
+      <input type="number" v-model="time" min="0" max="12" />
+      <select v-model="ampm">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
 
       <span>To-Do:</span>
       <input type="text" v-model="newItem" />
@@ -11,7 +15,7 @@
     </div>
     <ul class="itemsList">
       <li v-for="(toDoItem, index) in toDoItems" :key="index">
-        {{ toDoItem[0] }} h : {{ toDoItem[1] }}<span>✅</span
+        {{ toDoItem[0] }} {{ toDoItem[1] }} {{ toDoItem[2] }}<span>✅</span
         ><a @click="deleteItem(index)" title="Cancel Item">❌</a>
       </li>
     </ul>
@@ -23,6 +27,7 @@ export default {
   data() {
     return {
       time: "",
+      ampm: "AM",
       newItem: "",
       toDoItems: [],
     };
@@ -30,9 +35,9 @@ export default {
   methods: {
     addNewItem() {
       if (this.newItem.trim() !== "" && this.time) {
-        this.toDoItems.push([this.time, this.newItem]);
+        this.toDoItems.push([this.time, this.ampm, this.newItem]);
         this.time = this.newItem = "";
-
+        this.ampm = "AM";
         this.$emit("items-updated", this.toDoItems);
       }
     },
