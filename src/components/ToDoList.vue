@@ -37,10 +37,12 @@ export default {
         this.toDoItems.push([this.time, this.ampm, this.newItem]);
         this.time = this.newItem = "";
         this.ampm = "AM";
+        this.$emit("items-updated", this.toDoItems);
       }
     },
     deleteItem(index) {
       delete this.toDoItems.splice(index, 1);
+      this.$emit("items-updated", this.toDoItems);
     },
   },
 };

@@ -6,7 +6,6 @@
 
 <script>
 export default {
-  props: ["toggle", "toDoItems"],
-  methods: {},
+  props: ["toDoItems"],
 };
 </script>

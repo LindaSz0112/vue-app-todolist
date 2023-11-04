@@ -1,5 +1,5 @@
 <template>
-  <ToDoList></ToDoList>
+  <ToDoList @items-updated="itemsUpdated"></ToDoList>
   <OrderingArrows
     v-if="showArrows"
     :toggle="toggleArrows"
@@ -25,9 +25,11 @@ export default {
   },
   methods: {
     toggleArrows() {
-      if (this.toDoItems.length >= 2) {
-        this.showArrows = true;
-      }
+      this.showArrows = this.toDoItems.length >= 2;
+    },
+    itemsUpdated(items) {
+      this.toDoItems = items;
+      this.toggleArrows();
     },
   },
 };
