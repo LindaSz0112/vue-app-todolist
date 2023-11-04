@@ -14,13 +14,10 @@
       <button @click="addNewItem">Add</button>
     </div>
     <ul class="itemsList">
-      <li
-        v-for="(toDoItem, index) in toDoItems"
-        :key="index"
-        :style="textStyle"
-      >
-        {{ toDoItem[0] }} {{ toDoItem[1] }} {{ toDoItem[2]
-        }}<a @click="itemDone">✅</a
+      <li v-for="(toDoItem, index) in toDoItems" :key="index">
+        <span :style="toDoItem.textStyle">
+          {{ toDoItem.time }} {{ toDoItem.ampm }} {{ toDoItem.text }}</span
+        ><a v-if="toDoItem.displayButton" @click="itemDone(index)">✅</a
         ><a @click="deleteItem(index)" title="Cancel Item">❌</a>
       </li>
     </ul>
@@ -35,22 +32,26 @@ export default {
       ampm: "AM",
       newItem: "",
       toDoItems: [],
-      textStyle: {
-        textDecoration: "none",
-      },
     };
   },
   methods: {
     addNewItem() {
       if (this.newItem.trim() !== "" && this.time) {
-        this.toDoItems.push([this.time, this.ampm, this.newItem]);
+        this.toDoItems.push({
+          time: this.time,
+          ampm: this.ampm,
+          text: this.newItem,
+          textStyle: { textDecoration: "none" }, // Initialize textStyle
+          displayButton: true, // Initialize displayButton
+        });
         this.time = this.newItem = "";
         this.ampm = "AM";
         this.$emit("items-updated", this.toDoItems);
       }
     },
-    itemDone() {
-      this.textStyle.textDecoration = "line-through";
+    itemDone(index) {
+      this.toDoItems[index].textStyle.textDecoration = "line-through";
+      this.toDoItems[index].displayButton = false;
     },
     deleteItem(index) {
       delete this.toDoItems.splice(index, 1);
