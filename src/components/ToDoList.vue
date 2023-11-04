@@ -14,8 +14,13 @@
       <button @click="addNewItem">Add</button>
     </div>
     <ul class="itemsList">
-      <li v-for="(toDoItem, index) in toDoItems" :key="index">
-        {{ toDoItem[0] }} {{ toDoItem[1] }} {{ toDoItem[2] }}<span>✅</span
+      <li
+        v-for="(toDoItem, index) in toDoItems"
+        :key="index"
+        :style="textStyle"
+      >
+        {{ toDoItem[0] }} {{ toDoItem[1] }} {{ toDoItem[2]
+        }}<a @click="itemDone">✅</a
         ><a @click="deleteItem(index)" title="Cancel Item">❌</a>
       </li>
     </ul>
@@ -30,6 +35,9 @@ export default {
       ampm: "AM",
       newItem: "",
       toDoItems: [],
+      textStyle: {
+        textDecoration: "none",
+      },
     };
   },
   methods: {
@@ -40,6 +48,9 @@ export default {
         this.ampm = "AM";
         this.$emit("items-updated", this.toDoItems);
       }
+    },
+    itemDone() {
+      this.textStyle.textDecoration = "line-through";
     },
     deleteItem(index) {
       delete this.toDoItems.splice(index, 1);
