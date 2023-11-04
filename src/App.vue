@@ -1,6 +1,10 @@
 <template>
   <ToDoList></ToDoList>
-  <OrderingArrows></OrderingArrows>
+  <OrderingArrows
+    v-if="showArrows"
+    :toggle="toggleArrows"
+    :toDoItems="toDoItems"
+  ></OrderingArrows>
 </template>
 
 <script>
@@ -12,6 +16,19 @@ export default {
   components: {
     ToDoList,
     OrderingArrows,
+  },
+  data() {
+    return {
+      showArrows: false,
+      toDoItems: [],
+    };
+  },
+  methods: {
+    toggleArrows() {
+      if (this.toDoItems.length >= 2) {
+        this.showArrows = true;
+      }
+    },
   },
 };
 </script>
