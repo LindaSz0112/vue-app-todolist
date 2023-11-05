@@ -1,20 +1,20 @@
 <template>
-  <div class="container">
+  <div>
     <h1>To-Do List</h1>
     <div class="form-div">
-      <span>Time:</span>
+      <span>Time:</span><br />
       <input type="number" v-model="time" min="0" max="12" />
       <select v-model="ampm">
         <option value="AM">AM</option>
         <option value="PM">PM</option>
       </select>
-
-      <span>To-Do:</span>
+      <br />
+      <span>To-Do:</span><br />
       <input type="text" v-model="newItem" />
       <button @click="addNewItem">Add</button>
     </div>
     <ul class="itemsList">
-      <li v-for="(toDoItem, index) in toDoItems" :key="index">
+      <li v-for="(toDoItem, index) in toDoItems" :key="index" class="listItems">
         <span :style="toDoItem.textStyle">
           {{ toDoItem.time }} {{ toDoItem.ampm }} {{ toDoItem.text }}</span
         ><a v-if="toDoItem.displayButton" @click="itemDone(index)">✅</a

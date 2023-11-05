@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="arrows">
     <p>
       <a @click="orderItems('ascendingOrder')">⬆️</a>
       <a @click="orderItems('descendingOrder')">⬇️</a>

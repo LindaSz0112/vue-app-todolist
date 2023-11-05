@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <ToDoList @items-updated="itemsUpdated"></ToDoList>
     <OrderingArrows
       v-if="showArrows"
