@@ -15,10 +15,11 @@
     </div>
     <ul class="itemsList">
       <li v-for="(toDoItem, index) in toDoItems" :key="index" class="listItems">
-        <span :style="toDoItem.textStyle">
+        <a v-if="toDoItem.displayButton" @click="itemDone(index)">✅</a
+        ><a @click="deleteItem(index)" title="Cancel Item">❌</a
+        ><span class="toDoElement" :style="toDoItem.textStyle">
           {{ toDoItem.time }} {{ toDoItem.ampm }} {{ toDoItem.text }}</span
-        ><a v-if="toDoItem.displayButton" @click="itemDone(index)">✅</a
-        ><a @click="deleteItem(index)" title="Cancel Item">❌</a>
+        >
       </li>
     </ul>
   </div>
@@ -36,7 +37,10 @@ export default {
   },
   methods: {
     addNewItem() {
-      if (this.newItem.trim() !== "" && this.time) {
+      if (this.time > 12) {
+        alert("Please add a number between 1 and 12");
+      }
+      if (this.newItem.trim() !== "" && this.time <= 12) {
         this.toDoItems.push({
           time: this.time,
           ampm: this.ampm,

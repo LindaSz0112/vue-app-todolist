@@ -55,19 +55,30 @@ button:hover {
 
 ul {
     list-style: none;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-inline-start: 0;
 
 }
 
 .listItems {
     background-color: #2d767f;
     border-radius: 5px;
-    padding: 5%;
-    text-align: left
+    margin-bottom: 2%;
+    padding: 2%;
+    text-align: center;
 }
 
+.toDoElement {
+    margin: 10%;
+    color: aliceblue;
+}
+
+
+
 span {
+    font-family: 'Raleway', sans-serif;
+    ;
     font-size: large;
 }
 
