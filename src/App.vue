@@ -1,11 +1,12 @@
 <template>
-  <ToDoList @items-updated="itemsUpdated"></ToDoList>
-  <OrderingArrows
-    v-if="showArrows"
-    :toggle="toggleArrows"
-    :toDoItems="toDoItems"
-    @items-updated="updateToDoItems"
-  ></OrderingArrows>
+  <div>
+    <ToDoList @items-updated="itemsUpdated"></ToDoList>
+    <OrderingArrows
+      v-if="showArrows"
+      :toDoItems="toDoItems"
+      @items-updated="itemsUpdated"
+    ></OrderingArrows>
+  </div>
 </template>
 
 <script>
