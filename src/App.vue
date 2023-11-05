@@ -4,6 +4,7 @@
     v-if="showArrows"
     :toggle="toggleArrows"
     :toDoItems="toDoItems"
+    @items-updated="updateToDoItems"
   ></OrderingArrows>
 </template>
 

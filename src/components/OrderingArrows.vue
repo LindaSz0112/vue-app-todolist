@@ -18,10 +18,34 @@ export default {
   methods: {
     orderItems(orderType) {
       this.orders = orderType;
-      // const sortedItems = [...this.toDoItems];
+
+      // Create a copy of the toDoItems prop
+      const copiedToDoItems = this.toDoItems.slice();
+
       if (this.orders === "ascendingOrder") {
-        console.log(this.toDoItems.slice().sort((a, b) => a - b));
+        copiedToDoItems.sort((a, b) => {
+          const ampmComparison = a.ampm.localeCompare(b.ampm);
+
+          if (ampmComparison === 0) {
+            return a.time - b.time;
+          }
+          console.log(ampmComparison);
+          return ampmComparison;
+        });
+      } else if (this.orders === "descendingOrder") {
+        copiedToDoItems.sort((a, b) => {
+          const ampmComparison = b.ampm.localeCompare(a.ampm);
+
+          if (ampmComparison === 0) {
+            return b.time - a.time;
+          }
+          console.log(ampmComparison);
+          return ampmComparison;
+        });
       }
+
+      // Emit an event to send the sorted copy back to the parent component
+      this.$emit("items-updated", copiedToDoItems);
     },
   },
 };
