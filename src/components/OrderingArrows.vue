@@ -28,6 +28,7 @@ export default {
             return a.time - b.time;
           }
 
+          // this.$emit("items-updated", copiedItems);
           return ampmComparison;
         });
       } else if (this.orders === "descendingOrder") {
@@ -38,12 +39,14 @@ export default {
             return b.time - a.time;
           }
 
+          // this.$emit("items-updated", copiedItems);
           return ampmComparison;
         });
 
-        // Emit an event to send the sorted copy back to the parent component
-        this.$emit("items-updated", copiedItems);
+        // // Emit an event to send the sorted copy back to the parent component
+        // this.$emit("items-updated", copiedItems);
       }
+      this.$emit("items-updated", copiedItems);
     },
   },
 };

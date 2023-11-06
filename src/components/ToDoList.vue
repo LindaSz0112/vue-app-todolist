@@ -35,6 +35,7 @@ export default {
       toDoItems: [],
     };
   },
+
   methods: {
     addNewItem() {
       if (this.time > 12) {
